@@ -1,0 +1,30 @@
+﻿<Window x:Class="LibreChat.Messenger.Views.LobbyListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.ignore.com"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+        WindowStyle="ToolWindow"
+        Title="{Binding Title}"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding LobbyList, Source={StaticResource Locator}}" Height="206" Width="189">
+  <Grid>
+    <DataGrid ItemsSource="{Binding Lobbies}"
+              SelectedItem="{Binding SelectedLobby}"
+              IsReadOnly="True"
+              AutoGenerateColumns="False"
+              HeadersVisibility="Column">
+      <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDoubleClick">
+          <cmd:EventToCommand Command="{Binding OpenLobbyTabCommand, Mode=OneTime}"
+                              PassEventArgsToCommand="False" />
+        </i:EventTrigger>
+      </i:Interaction.Triggers>
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Комнаты" Width="*" Binding="{Binding Value}" />
+      </DataGrid.Columns>
+    </DataGrid>
+  </Grid>
+</Window>

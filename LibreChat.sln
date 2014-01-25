@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibreChat.Server", "LibreChat.Server\LibreChat.Server.csproj", "{C495F6FC-274F-4630-AA18-0E208D63B171}"
+	ProjectSection(ProjectDependencies) = postProject
+		{644505E6-96C4-4888-8E14-4A9F25D3B8F7} = {644505E6-96C4-4888-8E14-4A9F25D3B8F7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibreChat.Service", "LibreChat.Service\LibreChat.Service.csproj", "{644505E6-96C4-4888-8E14-4A9F25D3B8F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibreChat.Shared", "LibreChat.Shared\LibreChat.Shared.csproj", "{C9E0D5A7-89EF-4121-9E1D-2432475F20FC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{644505E6-96C4-4888-8E14-4A9F25D3B8F7} = {644505E6-96C4-4888-8E14-4A9F25D3B8F7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibreChat.Messenger", "LibreChat.Messenger\LibreChat.Messenger.csproj", "{6DFB9991-2358-429E-BAD5-00BD83191D51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C495F6FC-274F-4630-AA18-0E208D63B171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C495F6FC-274F-4630-AA18-0E208D63B171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C495F6FC-274F-4630-AA18-0E208D63B171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C495F6FC-274F-4630-AA18-0E208D63B171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{644505E6-96C4-4888-8E14-4A9F25D3B8F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{644505E6-96C4-4888-8E14-4A9F25D3B8F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{644505E6-96C4-4888-8E14-4A9F25D3B8F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{644505E6-96C4-4888-8E14-4A9F25D3B8F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9E0D5A7-89EF-4121-9E1D-2432475F20FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9E0D5A7-89EF-4121-9E1D-2432475F20FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9E0D5A7-89EF-4121-9E1D-2432475F20FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9E0D5A7-89EF-4121-9E1D-2432475F20FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DFB9991-2358-429E-BAD5-00BD83191D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DFB9991-2358-429E-BAD5-00BD83191D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DFB9991-2358-429E-BAD5-00BD83191D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DFB9991-2358-429E-BAD5-00BD83191D51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

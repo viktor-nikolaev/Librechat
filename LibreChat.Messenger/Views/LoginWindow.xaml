@@ -1,0 +1,35 @@
+﻿<Window x:Class="LibreChat.Messenger.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.ignore.com"
+        Title="Вход | Librechat"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding Login, Source={StaticResource Locator}}" Height="126" Width="204">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <!--      <ColumnDefinition Width="Auto" />-->
+      <!--      <ColumnDefinition />-->
+    </Grid.ColumnDefinitions>
+
+    <Grid Column="0">
+      <StackPanel Margin="5">
+        <Label>Логин</Label>
+        <TextBox Text="{Binding Login}" />
+
+        <!--        <Label>Пароль</Label>-->
+        <!--        <TextBox Text="{Binding Login}" />-->
+
+        <Button Command="{Binding LoginCommand, Mode=OneTime}" Content="Вход" Margin="0,5" />
+      </StackPanel>
+    </Grid>
+    <!--    <GridSplitter Grid.Column="1" Width="2" VerticalAlignment="Stretch" />-->
+    <!--    <Grid Grid.Column="2">-->
+    <!--      <StackPanel>-->
+
+    <!--      </StackPanel>-->
+    <!--    </Grid>-->
+  </Grid>
+</Window>

@@ -1,0 +1,104 @@
+﻿<Window x:Class="LibreChat.Messenger.Views.MessengerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.ignore.com"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+        xmlns:vm="clr-namespace:LibreChat.Messenger.ViewModel.TabViewModels"
+        mc:Ignorable="d ignore"
+        Closing="MessengerWindow_OnClosing"
+        Height="287" Width="536.9"
+        Title="{Binding Title}"
+        DataContext="{Binding Messenger, Source={StaticResource Locator}}">
+  <Window.Resources>
+    <DataTemplate DataType="{x:Type vm:LobbyTabViewModel}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="0.3*" MinWidth="100px" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Grid.Column="0" ItemsSource="{Binding LobbyMembers}"
+                  IsReadOnly="True" SelectedItem="{Binding SelectedMember}"
+                  HeadersVisibility="Column" AutoGenerateColumns="False">
+          <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseDoubleClick">
+              <cmd:EventToCommand Command="{Binding MemberClickCommand}" PassEventArgsToCommand="False" />
+            </i:EventTrigger>
+          </i:Interaction.Triggers>
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="В сети" Binding="{Binding Value}" Width="*" />
+          </DataGrid.Columns>
+        </DataGrid>
+
+        <GridSplitter Grid.Column="1" Width="2" VerticalAlignment="Stretch" />
+        <Grid Grid.Column="2">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="0.3*" />
+          </Grid.RowDefinitions>
+
+          <TextBox AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True" AutoWordSelection="True"
+                   VerticalScrollBarVisibility="Auto" Text="{Binding ChatFlow, Mode=OneWay}" />
+
+          <GridSplitter Grid.Row="1" Height="1" HorizontalAlignment="Stretch" />
+
+          <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="0.2*" />
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                     AcceptsReturn="True" Text="{Binding Message}" />
+            <Button Grid.Column="1" Content="Push!" VerticalAlignment="Stretch"
+                    Command="{Binding SendCommand, Mode=OneTime}" />
+          </Grid>
+        </Grid>
+      </Grid>
+
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WhisperTabViewModel}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="0.3*" />
+        </Grid.RowDefinitions>
+
+        <TextBox AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True" AutoWordSelection="True"
+                 VerticalScrollBarVisibility="Auto" Text="{Binding ChatFlow, Mode=OneWay}" />
+
+        <GridSplitter Grid.Row="1" Height="1" HorizontalAlignment="Stretch" />
+
+        <Grid Grid.Row="2">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.2*" />
+          </Grid.ColumnDefinitions>
+          <TextBox Grid.Column="0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                   AcceptsReturn="True" Text="{Binding Message}" />
+          <Button Grid.Column="1" Content="Push!" VerticalAlignment="Stretch"
+                  Command="{Binding SendCommand, Mode=OneTime}" />
+        </Grid>
+      </Grid>
+    </DataTemplate>
+  </Window.Resources>
+  <Grid>
+    <TabControl ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab}">
+      <TabControl.ItemTemplate>
+        <DataTemplate>
+          <WrapPanel>
+            <TextBlock Text="{Binding Opposite}" />
+            <Button Command="{Binding CloseCommand}" Content="X"
+                    Margin="4,0,0,0" FontFamily="Consolas" Width="17"
+                    Height="17" VerticalContentAlignment="Center" />
+          </WrapPanel>
+        </DataTemplate>
+      </TabControl.ItemTemplate>
+    </TabControl>
+  </Grid>
+</Window>
